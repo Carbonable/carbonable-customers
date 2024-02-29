@@ -1,0 +1,25 @@
+app = 'carbonable-customers-backend'
+primary_region = 'cdg'
+
+[build]
+build-target = "production"
+
+[processes]
+api = "./api"
+
+
+[deploy]
+release_command = "./migrate"
+
+[http_service]
+internal_port = 8080
+force_https = true
+auto_stop_machines = true
+auto_start_machines = true
+min_machines_running = 0
+processes = ['api']
+
+[[vm]]
+cpu_kind = 'shared'
+cpus = 1
+memory_mb = 1024
